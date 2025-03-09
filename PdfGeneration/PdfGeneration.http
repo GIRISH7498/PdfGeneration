@@ -1,0 +1,6 @@
+@PdfGeneration_HostAddress = http://localhost:5273
+
+GET {{PdfGeneration_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

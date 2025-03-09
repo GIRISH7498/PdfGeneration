@@ -1,0 +1,130 @@
+﻿@model PdfGeneration.Models.Student
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 30px;
+        }
+
+        .container {
+            max-width: 700px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .receipt-header {
+            text-align: center;
+            font-size: 18px;
+            color: #6c757d;
+            margin-bottom: 20px;
+        }
+
+        .receipt-info {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+
+            .receipt-info th, .receipt-info td {
+                padding: 10px;
+                text-align: left;
+                border-bottom: 1px solid #dee2e6;
+            }
+
+            .receipt-info th {
+                background-color: #f2f2f2;
+                font-weight: bold;
+            }
+
+        .footer {
+            text-align: center;
+            font-size: 14px;
+            color: #6c757d;
+            margin-top: 20px;
+        }
+
+        .status {
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        .status-completed {
+            color: #28a745;
+            background-color: #d4edda;
+        }
+
+        .status-pending {
+            color: #dc3545;
+            background-color: #f8d7da;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Enrollment Receipt</h1>
+        <p class="receipt-header">Confirmation of Student Enrollment</p>
+
+        <table class="receipt-info">
+            <tr>
+                <th>Full Name</th>
+                <td>@Model.FullName</td>
+            </tr>
+            <tr>
+                <th>Roll Number</th>
+                <td>@Model.RollNumber</td>
+            </tr>
+            <tr>
+                <th>Course</th>
+                <td>@Model.Course</td>
+            </tr>
+            <tr>
+                <th>Department</th>
+                <td>@Model.Department</td>
+            </tr>
+            <tr>
+                <th>Email</th>
+                <td>@Model.Email</td>
+            </tr>
+            <tr>
+                <th>Phone</th>
+                <td>@Model.PhoneNumber</td>
+            </tr>
+            <tr>
+                <th>Date of Birth</th>
+                <td>@Model.DateOfBirth.ToString("dd/MM/yyyy")</td>
+            </tr>
+            <tr>
+                <th>Enrollment Date</th>
+                <td>@Model.EnrollmentDate.ToString("dd/MM/yyyy")</td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td>@Model.Address, @Model.City, @Model.State - @Model.ZipCode</td>
+            </tr>
+            <tr>
+                <th>Payment Status</th>
+                <td>
+                    <span class="status @(Model.PaymentCompleted ? "status-completed" : "status-pending")">
+                        @(Model.PaymentCompleted ? "Completed" : "Pending")
+                    </span>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
